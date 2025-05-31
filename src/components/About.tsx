@@ -10,18 +10,18 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                I'm a passionate full-stack developer with over 5 years of experience 
-                creating digital solutions that make a difference. I specialize in 
-                modern web technologies and love turning complex problems into simple, 
-                beautiful designs.
+                I'm a passionate full-stack developer specializing in .NET Core, JavaScript, 
+                and modern web technologies. With expertise in developing scalable solutions 
+                for project management, meeting coordination, and system integration.
               </p>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                When I'm not coding, you can find me exploring new technologies, 
-                contributing to open source projects, or sharing knowledge with the 
-                developer community.
+                I have hands-on experience in building secure, efficient applications with 
+                robust authentication systems, database design, and API development. 
+                My focus is on creating solutions that enhance efficiency, transparency, 
+                and collaboration across teams.
               </p>
               <div className="flex flex-wrap gap-3">
-                {['React', 'TypeScript', 'Node.js', 'Python', 'AWS', 'Docker'].map((skill) => (
+                {['ASP.NET Core MVC', 'JavaScript', 'SQL Server', 'Bootstrap', 'jQuery', 'HTML/CSS', 'Git', 'Visual Studio'].map((skill) => (
                   <span
                     key={skill}
                     className="px-4 py-2 bg-accent text-accent-foreground rounded-full text-sm font-medium"

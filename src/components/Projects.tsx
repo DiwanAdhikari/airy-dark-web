@@ -1,26 +1,53 @@
 
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Github } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A modern e-commerce solution built with React and Node.js, featuring real-time inventory management and secure payment processing.',
-      tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80'
+      title: 'Project Management System',
+      description: 'Developed an advanced platform for technical interview preparation, featuring real-time coding challenges and mock interview simulations. Implemented user authentication and session management for secure access.',
+      features: [
+        'User authentication and session management for secure access',
+        'Architected scalable solutions using ASP.NET Core MVC',
+        'Comprehensive coding challenge platform'
+      ],
+      technologies: ['ASP.NET Core MVC', 'JavaScript', 'Bootstrap'],
+      githubLink: true
     },
     {
-      title: 'Task Management App',
-      description: 'A collaborative project management tool with real-time updates, drag-and-drop functionality, and team collaboration features.',
-      tags: ['Next.js', 'PostgreSQL', 'Socket.io', 'Tailwind'],
-      image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80'
+      title: 'Meeting Management System',
+      description: 'Developed a system for municipalities to streamline meeting scheduling, document management, and secure workflows, enhancing efficiency, transparency, and compliance with robust security and multilingual support.',
+      features: [
+        'Streamlined meeting scheduling and document management',
+        'Enhanced workflow automation, security, and transparency',
+        'Seamless integration across layers with multilingual support'
+      ],
+      technologies: ['ASP.NET Core', 'SQL Server', 'HTML', 'CSS', 'Bootstrap', 'JavaScript', 'jQuery'],
+      githubLink: true
     },
     {
-      title: 'Analytics Dashboard',
-      description: 'A comprehensive analytics platform providing real-time insights with interactive charts and customizable reporting features.',
-      tags: ['Vue.js', 'D3.js', 'Python', 'FastAPI'],
-      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80'
+      title: 'Planning Management System',
+      description: 'Developed a system for municipalities to streamline urban and rural planning processes, including project tracking, resource allocation, and compliance monitoring.',
+      features: [
+        'Secure user login system with role-based authorization',
+        'Personalized access to user-specific forms and reports',
+        'Robust database schema with MS SQL for effective data handling'
+      ],
+      technologies: ['ASP.NET Core MVC', 'SQL Server', 'JavaScript', 'jQuery', 'HTML', 'CSS'],
+      githubLink: true
+    },
+    {
+      title: 'SDIMS (System Delivery and Information Management System)',
+      description: 'Worked on the development of an API module, responsible for designing, implementing, and integrating APIs to support various functionalities with efficient data communication between systems.',
+      features: [
+        'Designed database for API module ensuring efficient data storage',
+        'Seamless integration and optimal performance across systems',
+        'Maintained security, scalability, and performance standards'
+      ],
+      technologies: ['ASP.NET Core API', 'SQL Server'],
+      githubLink: false
     }
   ];
 
@@ -30,34 +57,45 @@ const Projects = () => {
         <div className="animate-fade-in">
           <h2 className="text-4xl font-bold mb-4 text-center">Featured Projects</h2>
           <p className="text-xl text-muted-foreground mb-12 text-center max-w-2xl mx-auto">
-            A collection of my recent work showcasing different technologies and design approaches
+            A collection of professional projects showcasing expertise in full-stack development
           </p>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
               <Card 
                 key={index} 
                 className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
               >
-                <div className="aspect-video overflow-hidden rounded-t-lg">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
+                  <div className="flex items-start justify-between mb-4">
+                    <h3 className="text-xl font-semibold">{project.title}</h3>
+                    {project.githubLink && (
+                      <Github className="w-5 h-5 text-muted-foreground hover:text-foreground transition-colors cursor-pointer" />
+                    )}
+                  </div>
                   <p className="text-muted-foreground mb-4 leading-relaxed">
                     {project.description}
                   </p>
+                  
+                  <div className="mb-4">
+                    <h4 className="font-medium mb-2">Key Features:</h4>
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      {project.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <span className="w-1.5 h-1.5 bg-primary rounded-full mr-2 mt-2 flex-shrink-0"></span>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
                   <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
+                    {project.technologies.map((tech) => (
                       <span
-                        key={tag}
+                        key={tech}
                         className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium"
                       >
-                        {tag}
+                        {tech}
                       </span>
                     ))}
                   </div>
