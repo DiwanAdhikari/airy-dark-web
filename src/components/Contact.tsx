@@ -102,11 +102,11 @@ const Contact = () => {
               <div className="space-y-4">
                 <div className="flex items-center space-x-3 group">
                   <div className="w-2 h-2 bg-primary rounded-full group-hover:scale-125 transition-transform duration-300"></div>
-                  <span className="text-muted-foreground">diwan.adhikari@example.com</span>
+                  <span className="text-muted-foreground">deewaan101@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-3 group">
                   <div className="w-2 h-2 bg-primary rounded-full group-hover:scale-125 transition-transform duration-300"></div>
-                  <span className="text-muted-foreground">+977 98XXXXXXXX</span>
+                  <span className="text-muted-foreground">+977 9843621667 </span>
                 </div>
                 <div className="flex items-center space-x-3 group">
                   <div className="w-2 h-2 bg-primary rounded-full group-hover:scale-125 transition-transform duration-300"></div>
