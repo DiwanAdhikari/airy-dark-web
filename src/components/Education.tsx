@@ -7,19 +7,13 @@ const Education = () => {
     {
       institution: 'Patan Nist College',
       degree: 'Bachelors in Computer Application',
-      location: 'Running - Lalitpur Nepal',
+      location: 'Lalitpur, Nepal',
       period: 'Current'
     },
     {
       institution: 'Nepal Banepa Polytechnic Institute',
       degree: 'Diploma in Information Technology',
       location: 'Banepa, Kavre',
-      period: 'Completed'
-    },
-    {
-      institution: 'Bal Bikash Bidhyashram',
-      degree: 'School Leaving Certificate',
-      location: 'Kavre',
       period: 'Completed'
     }
   ];
@@ -35,7 +29,7 @@ const Education = () => {
           
           <div className="space-y-6">
             {education.map((edu, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
+              <Card key={index} className="hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02]">
                 <CardContent className="p-6">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                     <div className="mb-4 md:mb-0">

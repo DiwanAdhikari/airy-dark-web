@@ -7,12 +7,29 @@ import { useTheme } from './ThemeProvider';
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      
+      // Check which section is currently in view
+      const sections = ['about', 'education', 'projects', 'blog', 'contact'];
+      const scrollPosition = window.scrollY + 100; // Offset for better detection
+      
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(sectionId);
+            break;
+          }
+        }
+      }
     };
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -35,15 +52,15 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'
+      isScrolled ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-sm' : 'bg-transparent'
     }`}>
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <button 
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-2xl font-bold hover:text-primary transition-colors"
+            className="text-2xl font-bold hover:text-primary transition-colors duration-300"
           >
-            Portfolio
+            Diwan Adhikari
           </button>
           
           {/* Desktop Navigation */}
@@ -52,10 +69,14 @@ const Navigation = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200 relative group"
+                className={`text-muted-foreground hover:text-foreground transition-all duration-300 relative group ${
+                  activeSection === item.id ? 'text-primary font-medium' : ''
+                }`}
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                  activeSection === item.id ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}></span>
               </button>
             ))}
             
@@ -63,7 +84,7 @@ const Navigation = () => {
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-              className="rounded-full"
+              className="rounded-full hover:bg-accent transition-colors duration-300"
             >
               {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
             </Button>
@@ -93,12 +114,14 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-4 border-t border-border pt-4">
+          <div className="md:hidden mt-4 pb-4 space-y-4 border-t border-border pt-4 animate-fade-in">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="block w-full text-left text-muted-foreground hover:text-foreground transition-colors duration-200 py-2"
+                className={`block w-full text-left text-muted-foreground hover:text-foreground transition-colors duration-200 py-2 ${
+                  activeSection === item.id ? 'text-primary font-medium' : ''
+                }`}
               >
                 {item.label}
               </button>
